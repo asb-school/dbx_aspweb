@@ -12,7 +12,9 @@ namespace dbx_aspweb
 {
     public partial class PlayerWebForm : System.Web.UI.Page
     {
-       
+        // Initialize the database controller
+        private mainEntity thedatabase = new mainEntity();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             // Nothing to do here
@@ -20,9 +22,7 @@ namespace dbx_aspweb
 
         public IQueryable<player> GetPlayers()
         {
-            var _db = new dbx_aspweb.mainEntity();
-
-            IQueryable<player> query = _db.players;
+            var query = thedatabase.players.Select(p => p);
 
             return query;
         }

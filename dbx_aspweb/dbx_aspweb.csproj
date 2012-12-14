@@ -218,6 +218,7 @@
       <LastGenOutput>dbModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="PlayerDetailForm.aspx" />
     <Content Include="PlayerWebForm.aspx" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -337,6 +338,13 @@
     </Compile>
     <Compile Include="player.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerDetailForm.aspx.cs">
+      <DependentUpon>PlayerDetailForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlayerDetailForm.aspx.designer.cs">
+      <DependentUpon>PlayerDetailForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="PlayerWebForm.aspx.cs">
       <DependentUpon>PlayerWebForm.aspx</DependentUpon>

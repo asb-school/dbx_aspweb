@@ -4,7 +4,7 @@
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title>DBX ASP WEB</title>
     <asp:PlaceHolder runat="server">     
           <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>  
@@ -38,11 +38,11 @@
         <div class="content-wrapper">
             <div class="float-left">
                 <p class="site-title">
-                    <a runat="server" href="~/">your logo here</a>
+                    <a runat="server" href="~/">DBX ASP WEB</a>
                 </p>
             </div>
             <div class="float-right">
-                <section id="login">
+                <!--<section id="login">
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul>
@@ -58,12 +58,12 @@
                             </p>
                         </LoggedInTemplate>
                     </asp:LoginView>
-                </section>
+                </section>-->
                 <nav>
                     <ul id="menu">
                         <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About.aspx">About</a></li>
-                        <li><a runat="server" href="~/Contact.aspx">Contact</a></li>
+                        <li><a runat="server" href="~/PlayerWebForm.aspx">Players</a></li>
+                        <li><a runat="server" href="~/NpcsList.aspx">NPCs</a></li>
                     </ul>
                 </nav>
             </div>
@@ -78,7 +78,7 @@
     <footer>
         <div class="content-wrapper">
             <div class="float-left">
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p>&copy; <%: DateTime.Now.Year %> - DBX ASP WEB</p>
             </div>
         </div>
     </footer>
