@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbx_aspwebModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="dbx_aspwebModelStoreContainer">
+          <EntitySet Name="npc" EntityType="dbx_aspwebModel.Store.npc" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="npc_type" EntityType="dbx_aspwebModel.Store.npc_type" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="player" EntityType="dbx_aspwebModel.Store.player" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="region" EntityType="dbx_aspwebModel.Store.region" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="npc_type_id" Association="dbx_aspwebModel.Store.npc_type_id">
+            <End Role="npc_type" EntitySet="npc_type" />
+            <End Role="npc" EntitySet="npc" />
+          </AssociationSet>
+          <AssociationSet Name="player_region_id" Association="dbx_aspwebModel.Store.player_region_id">
+            <End Role="region" EntitySet="region" />
+            <End Role="player" EntitySet="player" />
+          </AssociationSet>
+          <AssociationSet Name="region_id" Association="dbx_aspwebModel.Store.region_id">
+            <End Role="region" EntitySet="region" />
+            <End Role="npc" EntitySet="npc" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="npc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="pos_x" Type="int" Nullable="false" />
+          <Property Name="pos_y" Type="int" Nullable="false" />
+          <Property Name="region_id" Type="int" Nullable="false" />
+          <Property Name="npc_type_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="npc_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" Nullable="false" MaxLength="50" />
+          <Property Name="aggressiveness" Type="float" Nullable="false" />
+          <Property Name="benevolence" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" Nullable="false" MaxLength="50" />
+          <Property Name="health" Type="float" Nullable="false" />
+          <Property Name="skill_level" Type="float" Nullable="false" />
+          <Property Name="birth_date" Type="int" Nullable="false" />
+          <Property Name="pos_x" Type="int" Nullable="false" />
+          <Property Name="pos_y" Type="int" Nullable="false" />
+          <Property Name="login_name" Type="nchar" Nullable="false" MaxLength="50" />
+          <Property Name="login_password" Type="char" Nullable="false" MaxLength="32" />
+          <Property Name="region_id" Type="int" Nullable="false" />
+          <Property Name="admin" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="region">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="npc_type_id">
+          <End Role="npc_type" Type="dbx_aspwebModel.Store.npc_type" Multiplicity="1" />
+          <End Role="npc" Type="dbx_aspwebModel.Store.npc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="npc_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="npc">
+              <PropertyRef Name="npc_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="player_region_id">
+          <End Role="region" Type="dbx_aspwebModel.Store.region" Multiplicity="1" />
+          <End Role="player" Type="dbx_aspwebModel.Store.player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="region">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="player">
+              <PropertyRef Name="region_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="region_id">
+          <End Role="region" Type="dbx_aspwebModel.Store.region" Multiplicity="1" />
+          <End Role="npc" Type="dbx_aspwebModel.Store.npc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="region">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="npc">
+              <PropertyRef Name="region_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbx_aspwebModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dbx_aspwebEntities1" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="npcs" EntityType="dbx_aspwebModel.npc" />
+          <EntitySet Name="npc_type" EntityType="dbx_aspwebModel.npc_type" />
+          <EntitySet Name="players" EntityType="dbx_aspwebModel.player" />
+          <EntitySet Name="regions" EntityType="dbx_aspwebModel.region" />
+          <AssociationSet Name="npc_type_id" Association="dbx_aspwebModel.npc_type_id">
+            <End Role="npc_type" EntitySet="npc_type" />
+            <End Role="npc" EntitySet="npcs" />
+          </AssociationSet>
+          <AssociationSet Name="region_id" Association="dbx_aspwebModel.region_id">
+            <End Role="region" EntitySet="regions" />
+            <End Role="npc" EntitySet="npcs" />
+          </AssociationSet>
+          <AssociationSet Name="player_region_id" Association="dbx_aspwebModel.player_region_id">
+            <End Role="region" EntitySet="regions" />
+            <End Role="player" EntitySet="players" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="npc">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="pos_x" Type="Int32" Nullable="false" />
+          <Property Name="pos_y" Type="Int32" Nullable="false" />
+          <Property Name="region_id" Type="Int32" Nullable="false" />
+          <Property Name="npc_type_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="npc_type" Relationship="dbx_aspwebModel.npc_type_id" FromRole="npc" ToRole="npc_type" />
+          <NavigationProperty Name="region" Relationship="dbx_aspwebModel.region_id" FromRole="npc" ToRole="region" />
+        </EntityType>
+        <EntityType Name="npc_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="aggressiveness" Type="Double" Nullable="false" />
+          <Property Name="benevolence" Type="Double" Nullable="false" />
+          <NavigationProperty Name="npcs" Relationship="dbx_aspwebModel.npc_type_id" FromRole="npc_type" ToRole="npc" />
+        </EntityType>
+        <EntityType Name="player">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="health" Type="Double" Nullable="false" />
+          <Property Name="skill_level" Type="Double" Nullable="false" />
+          <Property Name="birth_date" Type="Int32" Nullable="false" />
+          <Property Name="pos_x" Type="Int32" Nullable="false" />
+          <Property Name="pos_y" Type="Int32" Nullable="false" />
+          <Property Name="login_name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="true" />
+          <Property Name="login_password" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="true" />
+          <Property Name="region_id" Type="Int32" Nullable="false" />
+          <Property Name="admin" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="region" Relationship="dbx_aspwebModel.player_region_id" FromRole="player" ToRole="region" />
+        </EntityType>
+        <EntityType Name="region">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="npcs" Relationship="dbx_aspwebModel.region_id" FromRole="region" ToRole="npc" />
+          <NavigationProperty Name="players" Relationship="dbx_aspwebModel.player_region_id" FromRole="region" ToRole="player" />
+        </EntityType>
+        <Association Name="npc_type_id">
+          <End Role="npc_type" Type="dbx_aspwebModel.npc_type" Multiplicity="1" />
+          <End Role="npc" Type="dbx_aspwebModel.npc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="npc_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="npc">
+              <PropertyRef Name="npc_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="region_id">
+          <End Role="region" Type="dbx_aspwebModel.region" Multiplicity="1" />
+          <End Role="npc" Type="dbx_aspwebModel.npc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="region">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="npc">
+              <PropertyRef Name="region_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="player_region_id">
+          <End Role="region" Type="dbx_aspwebModel.region" Multiplicity="1" />
+          <End Role="player" Type="dbx_aspwebModel.player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="region">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="player">
+              <PropertyRef Name="region_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbx_aspwebModelStoreContainer" CdmEntityContainer="dbx_aspwebEntities1">
+          <EntitySetMapping Name="npcs">
+            <EntityTypeMapping TypeName="dbx_aspwebModel.npc">
+              <MappingFragment StoreEntitySet="npc">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="pos_x" ColumnName="pos_x" />
+                <ScalarProperty Name="pos_y" ColumnName="pos_y" />
+                <ScalarProperty Name="region_id" ColumnName="region_id" />
+                <ScalarProperty Name="npc_type_id" ColumnName="npc_type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="npc_type">
+            <EntityTypeMapping TypeName="dbx_aspwebModel.npc_type">
+              <MappingFragment StoreEntitySet="npc_type">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="aggressiveness" ColumnName="aggressiveness" />
+                <ScalarProperty Name="benevolence" ColumnName="benevolence" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="players">
+            <EntityTypeMapping TypeName="dbx_aspwebModel.player">
+              <MappingFragment StoreEntitySet="player">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="health" ColumnName="health" />
+                <ScalarProperty Name="skill_level" ColumnName="skill_level" />
+                <ScalarProperty Name="birth_date" ColumnName="birth_date" />
+                <ScalarProperty Name="pos_x" ColumnName="pos_x" />
+                <ScalarProperty Name="pos_y" ColumnName="pos_y" />
+                <ScalarProperty Name="login_name" ColumnName="login_name" />
+                <ScalarProperty Name="login_password" ColumnName="login_password" />
+                <ScalarProperty Name="region_id" ColumnName="region_id" />
+                <ScalarProperty Name="admin" ColumnName="admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="regions">
+            <EntityTypeMapping TypeName="dbx_aspwebModel.region">
+              <MappingFragment StoreEntitySet="region">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

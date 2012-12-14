@@ -44,6 +44,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -197,6 +200,23 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="packages.config" />
+    <EntityDeploy Include="db-Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>db-Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="db-Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>db-Model.edmx</DependentUpon>
+      <LastGenOutput>db-Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="db-Model.edmx.diagram">
+      <DependentUpon>db-Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="db-Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>db-Model.edmx</DependentUpon>
+      <LastGenOutput>db-Model.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
@@ -283,6 +303,21 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="db-Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db-Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db-Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db-Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db-Model.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -293,7 +328,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="npc.cs">
+      <DependentUpon>db-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="npc_type.cs">
+      <DependentUpon>db-Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="player.cs">
+      <DependentUpon>db-Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="region.cs">
+      <DependentUpon>db-Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -316,6 +363,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
