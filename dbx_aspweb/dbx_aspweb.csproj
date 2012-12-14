@@ -200,24 +200,25 @@
     <Content Include="Images\orderedList8.png" />
     <Content Include="Images\orderedList9.png" />
     <Content Include="packages.config" />
-    <EntityDeploy Include="db-Model.edmx">
+    <EntityDeploy Include="dbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>db-Model.Designer.cs</LastGenOutput>
+      <LastGenOutput>dbModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="db-Model.Context.tt">
+    <Content Include="dbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>db-Model.edmx</DependentUpon>
-      <LastGenOutput>db-Model.Context.cs</LastGenOutput>
+      <DependentUpon>dbModel.edmx</DependentUpon>
+      <LastGenOutput>dbModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="db-Model.edmx.diagram">
-      <DependentUpon>db-Model.edmx</DependentUpon>
+    <Content Include="dbModel.edmx.diagram">
+      <DependentUpon>dbModel.edmx</DependentUpon>
     </Content>
-    <Content Include="db-Model.tt">
+    <Content Include="dbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>db-Model.edmx</DependentUpon>
-      <LastGenOutput>db-Model.cs</LastGenOutput>
+      <DependentUpon>dbModel.edmx</DependentUpon>
+      <LastGenOutput>dbModel.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="PlayerWebForm.aspx" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
@@ -303,20 +304,20 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="db-Model.Context.cs">
+    <Compile Include="dbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>db-Model.Context.tt</DependentUpon>
+      <DependentUpon>dbModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="db-Model.cs">
+    <Compile Include="dbModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>db-Model.tt</DependentUpon>
+      <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="db-Model.Designer.cs">
+    <Compile Include="dbModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>db-Model.edmx</DependentUpon>
+      <DependentUpon>dbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -329,17 +330,24 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="npc.cs">
-      <DependentUpon>db-Model.tt</DependentUpon>
+      <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="npc_type.cs">
-      <DependentUpon>db-Model.tt</DependentUpon>
+      <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="player.cs">
-      <DependentUpon>db-Model.tt</DependentUpon>
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerWebForm.aspx.cs">
+      <DependentUpon>PlayerWebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlayerWebForm.aspx.designer.cs">
+      <DependentUpon>PlayerWebForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="region.cs">
-      <DependentUpon>db-Model.tt</DependentUpon>
+      <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

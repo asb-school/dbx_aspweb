@@ -13,10 +13,10 @@ namespace dbx_aspweb
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dbx_aspwebEntities1 : DbContext
+    public partial class mainEntity : DbContext
     {
-        public dbx_aspwebEntities1()
-            : base("name=dbx_aspwebEntities1")
+        public mainEntity()
+            : base("name=mainEntity")
         {
         }
     

@@ -106,7 +106,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbx_aspwebModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="dbx_aspwebEntities1" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="mainEntity" p1:LazyLoadingEnabled="true">
           <EntitySet Name="npcs" EntityType="dbx_aspwebModel.npc" />
           <EntitySet Name="npc_type" EntityType="dbx_aspwebModel.npc_type" />
           <EntitySet Name="players" EntityType="dbx_aspwebModel.player" />
@@ -213,7 +213,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dbx_aspwebModelStoreContainer" CdmEntityContainer="dbx_aspwebEntities1">
+        <EntityContainerMapping StorageEntityContainer="dbx_aspwebModelStoreContainer" CdmEntityContainer="mainEntity">
           <EntitySetMapping Name="npcs">
             <EntityTypeMapping TypeName="dbx_aspwebModel.npc">
               <MappingFragment StoreEntitySet="npc">
