@@ -26,5 +26,16 @@ namespace dbx_aspweb
 
             return query;
         }
+
+        public void UpdatePlayer(int id)
+        {
+            var player = this.thedatabase.players.Find(id);
+
+            TryUpdateModel(player);
+            if (ModelState.IsValid)
+            {
+                this.thedatabase.SaveChanges();
+            }
+        }
     }
 }

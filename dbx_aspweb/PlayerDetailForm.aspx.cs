@@ -35,5 +35,9 @@ namespace dbx_aspweb
             }
             
         }
+
+        public void UpdatePlayer(object sender, EventArgs e)
+        {
+        }
     }
 }

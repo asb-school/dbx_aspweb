@@ -6,14 +6,14 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" ItemType="dbx_aspweb.player" DataKeyNames="id" SelectMethod="GetPlayers">
+    <asp:GridView ID="GridView1" CellPadding="10" runat="server" AutoGenerateColumns="false" ItemType="dbx_aspweb.player" DataKeyNames="id" SelectMethod="GetPlayers" AutoGenerateSelectButton="true" AutoGenerateEditButton="true" UpdateMethod="UpdatePlayer">
         <Columns>
-            <asp:TemplateField>
-                <ItemTemplate><a href="PlayerDetailForm.aspx?id=<%#: Item.id %>">View</a></ItemTemplate>
-            </asp:TemplateField>
-            <asp:BoundField DataField="id" HeaderText="ID" SortExpression="id" />
             <asp:BoundField DataField="name" HeaderText="Name" SortExpression="name" />
             <asp:BoundField DataField="health" HeaderText="Health" SortExpression="health" />
+            <asp:BoundField DataField="skill_level" HeaderText="Skill Level" SortExpression="skill_level" />
+            <asp:BoundField DataField="pos_x" HeaderText="Position X" SortExpression="pos_x" />
+            <asp:BoundField DataField="pos_y" HeaderText="Position Y" SortExpression="pos_y" />
+            <asp:BoundField DataField="login_name" HeaderText="Login Name" SortExpression="login_name" />
         </Columns>
     </asp:GridView> 
 
